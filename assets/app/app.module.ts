@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from "./app.component";
+import {
+  MessageComponent,
+  MessageContainerComponent
+} from "./components";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        MessageComponent,
+        MessageContainerComponent
     ],
     imports: [BrowserModule, FormsModule],
     bootstrap: [AppComponent]
