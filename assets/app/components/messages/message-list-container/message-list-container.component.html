@@ -1,4 +1,14 @@
-<app-message *ngFor="let message of messages"
-             (editClicked)="message.content = $event"
-             [message]="message">
-</app-message>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <app-message-input></app-message-input>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <app-message *ngFor="let message of messages"
+                     (editClicked)="message.content = $event"
+                     [message]="message">
+        </app-message>
+    </div>
+</div>
