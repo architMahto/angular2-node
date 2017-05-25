@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { Message } from '../../../../models';
+import { MessageService } from '../../../../services';
+
 @Component({
   selector: 'app-message-input',
   styleUrls: ['./message-input.component.css'],
@@ -7,7 +10,13 @@ import { Component } from '@angular/core';
 })
 
 export class MessageInputComponent {
+  constructor(private messageService: MessageService) {}
+
   onSave(value: string) {
-    console.log(value);
+    const message: Message = {
+      content: value,
+      username: 'Max'
+    };
+    this.messageService.addMessage(message);
   }
 }
