@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 
 import { MessageModule } from './components';
 
+import { MessageService } from './services';
+
 @NgModule({
     declarations: [
       AppComponent
@@ -12,6 +14,9 @@ import { MessageModule } from './components';
     imports: [
       BrowserModule,
       MessageModule
+    ],
+    providers: [
+      MessageService
     ],
     bootstrap: [
       AppComponent
