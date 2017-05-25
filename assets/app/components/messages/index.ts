@@ -1,2 +1,1 @@
-export * from './message-container';
-export * from './message';
+export * from './message.module';

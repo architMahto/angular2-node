@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Message} from '../../../models';
+import {Message} from '../../../../models';
 
 @Component({
   selector: 'app-message',
