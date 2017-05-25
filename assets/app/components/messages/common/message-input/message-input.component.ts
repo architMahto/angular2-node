@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Message } from '../../../../models';
 import { MessageService } from '../../../../services';
@@ -12,11 +13,12 @@ import { MessageService } from '../../../../services';
 export class MessageInputComponent {
   constructor(private messageService: MessageService) {}
 
-  onSave(value: string) {
+  onSubmit(form: NgForm) {
     const message: Message = {
-      content: value,
+      content: form.value.content,
       username: 'Max'
     };
     this.messageService.addMessage(message);
+    form.resetForm();
   }
 }
