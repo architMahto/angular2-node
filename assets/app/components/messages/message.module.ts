@@ -3,19 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { MessageListComponent } from './message-list';
 import { MessageListContainerComponent } from './message-list-container';
-import { MessageComponent } from './common';
+import { MessageComponent, MessageInputComponent } from './common';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
+    MessageComponent,
+    MessageInputComponent,
     MessageListComponent,
-    MessageListContainerComponent,
-    MessageComponent
+    MessageListContainerComponent
   ],
   exports: [
-    MessageListContainerComponent,
+    MessageListContainerComponent
   ],
   providers: []
 })
