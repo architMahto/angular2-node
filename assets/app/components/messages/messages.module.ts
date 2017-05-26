@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MessageListComponent } from './message-list';
 import { MessageListContainerComponent } from './message-list-container';
 import { MessageComponent, MessageInputComponent } from './common';
+import { MessagesComponent } from './messages.component';
 
 @NgModule({
   imports: [
@@ -15,12 +16,13 @@ import { MessageComponent, MessageInputComponent } from './common';
     MessageComponent,
     MessageInputComponent,
     MessageListComponent,
-    MessageListContainerComponent
+    MessageListContainerComponent,
+    MessagesComponent
   ],
   exports: [
-    MessageListContainerComponent
+    MessagesComponent
   ],
   providers: []
 })
 
-export class MessageModule {}
+export class MessagesModule {}

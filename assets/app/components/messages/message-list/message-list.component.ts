@@ -9,5 +9,5 @@ import { Message } from '../../../models';
 
 export class MessageListComponent {
   @Input()
-  message: Message[];
+  messages: Message[];
 }

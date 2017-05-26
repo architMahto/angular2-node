@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { MessageModule } from './components';
+import { MessagesModule } from './components';
 
 import { MessageService } from './services';
 
@@ -13,7 +13,7 @@ import { MessageService } from './services';
     ],
     imports: [
       BrowserModule,
-      MessageModule
+      MessagesModule
     ],
     providers: [
       MessageService

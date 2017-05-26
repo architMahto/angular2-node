@@ -1,1 +1,1 @@
-export * from './message.module';
+export * from './messages.module';
