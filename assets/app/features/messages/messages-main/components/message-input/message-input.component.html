@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm">
+    <div class="form-group">
+        <label for="content">Content</label>
+        <input class="form-control"
+               id="content"
+               name="content"
+               ngModel
+               required
+               type="text" />
+    </div>
+    <button class="btn btn-primary" type="submit">
+        Save
+    </button>
+</form>
