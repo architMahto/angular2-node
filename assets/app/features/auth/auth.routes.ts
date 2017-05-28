@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './auth.component';
-import { authMainRoutes } from './auth-main';
 import { logoutRoutes } from './logout';
 import { signinRoutes } from './signin';
 import { signupRoutes } from './signup';
@@ -13,12 +12,11 @@ export const authRoutes: Routes = [
       {
         pathMatch: 'full',
         path: '',
-        redirectTo: 'auth-main'
+        redirectTo: 'signup'
       },
-      ...authMainRoutes,
-      ...logoutRoutes,
+      ...signupRoutes,
       ...signinRoutes,
-      ...signupRoutes
+      ...logoutRoutes,
     ]
   }
 ];
