@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  AuthMainComponent,
-  AuthMainContainerComponent
+  LogoutComponent,
+  LogoutContainerComponent
 } from './components';
 
 @NgModule({
@@ -11,13 +11,13 @@ import {
     CommonModule
   ],
   declarations: [
-    AuthMainComponent,
-    AuthMainContainerComponent
+    LogoutComponent,
+    LogoutContainerComponent
   ],
   exports: [
-    AuthMainContainerComponent
+    LogoutContainerComponent
   ],
   providers: []
 })
 
-export class AuthMainModule {}
+export class LogoutModule {}

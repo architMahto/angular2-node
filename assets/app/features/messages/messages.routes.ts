@@ -9,7 +9,7 @@ export const messagesRoutes: Routes = [
     children: [
       {
         pathMatch: 'full',
-        path: 'messages-main',
+        path: '',
         redirectTo: 'messages-main'
       },
       ...messagesMainRoutes

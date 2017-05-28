@@ -1,11 +1,11 @@
-import { AuthComponent, MessagesComponent } from './features';
 import { Routes, RouterModule } from '@angular/router';
+import { authRoutes, messagesRoutes } from './features';
 
 
 const appRoutes: Routes = [
   { pathMatch: 'full', path: '', redirectTo: 'messages' },
-  { path: 'messages', component: MessagesComponent },
-  { path: 'auth', component: AuthComponent },
+  ...messagesRoutes,
+  ...authRoutes
 ]
 
 export const AppRouting = RouterModule.forRoot(appRoutes);
