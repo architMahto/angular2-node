@@ -18,7 +18,13 @@ export class MessageInputComponent {
       content: form.value.content,
       username: 'Max'
     };
-    this.messageService.addMessage(message);
+    
+    this.messageService.addMessage(message)
+      .subscribe(
+        data => console.log(data),
+        error => console.error(error)
+      );
+
     form.resetForm();
   }
 }
