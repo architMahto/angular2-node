@@ -3,6 +3,24 @@ var router = express.Router();
 
 var Message = require('../models/message');
 
+router.get('/', function (req, res, next) {
+  Message
+    .find()
+    .exec(function(err, messages) {
+      if (err) {
+        res.status(500).json({
+          title: 'An error occured',
+          error: err
+        });
+      }
+
+      res.status(200).json({
+        message: 'Successfully retrieved',
+        obj: messages 
+      });
+    });
+});
+
 router.post('/', function (req, res, next) {
   var message = new Message({
     content: req.body.content
