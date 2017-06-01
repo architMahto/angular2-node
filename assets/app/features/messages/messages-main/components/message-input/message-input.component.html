@@ -4,11 +4,10 @@
         <input class="form-control"
                id="content"
                name="content"
-               ngModel
+               [ngModel]="message?.content"
                required
                type="text" />
     </div>
-    <button class="btn btn-primary" type="submit">
-        Save
-    </button>
+    <button type="button" class="btn btn-danger" (click)="onClear(messageForm)">Clear</button>
+    <button class="btn btn-primary" type="submit">Save</button>
 </form>
