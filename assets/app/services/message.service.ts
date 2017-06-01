@@ -16,8 +16,14 @@ export class MessageService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post('http://localhost:3000/message', message, { headers })
             .map((response: Response) => {
+              const message: Message = {
+                content: response.json().obj.content,
+                username: 'Dummy',
+                messageId: response.json().obj._id,
+                userId: null
+              };
               this.messages.push(message);
-              return response.json();
+              return message;
             })
             .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -27,7 +33,13 @@ export class MessageService {
   }
 
   updateMessage(message: Message) {
-    
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.patch(`http://localhost:3000/message/${message.messageId}`, message, { headers })
+            .map((response: Response) => {
+              this.messages.push(message);
+              return response.json();
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
   }
 
   getMessages() {
@@ -39,7 +51,7 @@ export class MessageService {
                                         return {
                                           content: message.content,
                                           username: 'Dummy',
-                                          messageId: message.id,
+                                          messageId: message._id,
                                           userId: null
                                         };
                                       });
