@@ -14,8 +14,9 @@ export class MessagesMainContainerComponent {
     
     ngOnInit() {
         this.messageService.getMessages()
-            .subscribe((messages: Message[]) => {
-                this.messages = messages;
-            })
+            .subscribe(
+                (messages: Message[]) => { this.messages = messages; },
+                (error: any) => { console.log(error); }
+            );
     }
 }
