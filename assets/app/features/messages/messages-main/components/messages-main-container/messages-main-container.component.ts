@@ -9,10 +9,14 @@ import { MessageService } from '../../../../../services';
 
 export class MessagesMainContainerComponent {
     messages: Message[];
-
+    
     constructor(private messageService: MessageService) {}
-
+    
     ngOnInit() {
-        this.messages = this.messageService.getMessages();
+        this.messageService.getMessages()
+            .subscribe(
+                (messages: Message[]) => { this.messages = messages; },
+                (error: any) => { console.log(error); }
+            );
     }
 }
