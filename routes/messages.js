@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
     .find()
     .exec(function(err, messages) {
       if (err) {
-        res.status(500).json({
+        return res.status(500).json({
           title: 'An error occured',
           error: err
         });
@@ -28,7 +28,7 @@ router.post('/', function (req, res, next) {
 
   message.save(function(err, result) {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         title: 'An error occured',
         error: err
       });
@@ -44,7 +44,7 @@ router.post('/', function (req, res, next) {
 router.patch('/:id', function(req, res, next) {
   Message.findById(req.params.id, function(err, message) {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         title: 'An error occured',
         error: err
       });
@@ -60,7 +60,7 @@ router.patch('/:id', function(req, res, next) {
     message.content = req.body.content;
     message.save(function(err, result) {
       if (err) {
-        res.status(500).json({
+        return res.status(500).json({
           title: 'An error occured',
           error: err
         });
@@ -77,7 +77,7 @@ router.patch('/:id', function(req, res, next) {
 router.delete('/:id', function(req, res, next) {
   Message.findById(req.params.id, function(err, message) {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         title: 'An error occured',
         error: err
       });
@@ -92,7 +92,7 @@ router.delete('/:id', function(req, res, next) {
 
     message.remove(function(err, result) {
       if (err) {
-        res.status(500).json({
+        return res.status(500).json({
           title: 'An error occured',
           error: err
         });
