@@ -21,9 +21,9 @@ export class MessageService {
             .map((response: Response) => {
               const message: Message = {
                 content: response.json().obj.content,
-                username: 'Dummy',
+                username: response.json().obj.user.firstName,
                 messageId: response.json().obj._id,
-                userId: null
+                userId: response.json().obj.user._id
               };
               this.messages.push(message);
               return message;
@@ -56,9 +56,9 @@ export class MessageService {
                                       .map(message => {
                                         return {
                                           content: message.content,
-                                          username: 'Dummy',
+                                          username: message.user.firstName,
                                           messageId: message._id,
-                                          userId: null
+                                          userId: message.user._id
                                         };
                                       });
               this.messages = transformedMessages;
