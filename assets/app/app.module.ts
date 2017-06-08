@@ -5,11 +5,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 
-import { CommonComponentsModule} from './common';
+import { CommonComponentsModule } from './common';
 import { AuthModule, MessagesModule } from './features';
 
 import {
   AuthService,
+  ErrorService,
   MessageService
 } from './services';
 
@@ -27,6 +28,7 @@ import {
     ],
     providers: [
       AuthService,
+      ErrorService,
       MessageService
     ],
     bootstrap: [
