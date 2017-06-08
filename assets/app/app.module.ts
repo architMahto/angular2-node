@@ -10,6 +10,7 @@ import { AuthModule, MessagesModule } from './features';
 
 import {
   AuthService,
+  ErrorService,
   MessageService
 } from './services';
 
@@ -27,6 +28,7 @@ import {
     ],
     providers: [
       AuthService,
+      ErrorService,
       MessageService
     ],
     bootstrap: [
