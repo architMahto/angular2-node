@@ -21,12 +21,31 @@ export class MessageService {
             .map((response: Response) => {
               const message: Message = {
                 content: response.json().obj.content,
-                username: 'Dummy',
+                username: response.json().obj.user.firstName,
                 messageId: response.json().obj._id,
-                userId: null
+                userId: response.json().obj.user._id
               };
               this.messages.push(message);
               return message;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  getMessages() {
+    return this.http.get('http://localhost:3000/message')
+            .map((response: Response) => {
+              let transformedMessages: Message[] = [];
+              transformedMessages = response.json().obj
+                                      .map(message => {
+                                        return {
+                                          content: message.content,
+                                          username: message.user.firstName,
+                                          messageId: message._id,
+                                          userId: message.user._id
+                                        };
+                                      });
+              this.messages = transformedMessages;
+              return transformedMessages;
             })
             .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -41,29 +60,7 @@ export class MessageService {
               ? `?token=${localStorage.getItem('token')}` 
               : '';
     return this.http.patch(`http://localhost:3000/message/${message.messageId}/${token}`, message, { headers })
-            .map((response: Response) => {
-              this.messages.push(message);
-              return response.json();
-            })
-            .catch((error: Response) => Observable.throw(error.json()));
-  }
-
-  getMessages() {
-    return this.http.get('http://localhost:3000/message')
-            .map((response: Response) => {
-              let transformedMessages: Message[] = [];
-              transformedMessages = response.json().obj
-                                      .map(message => {
-                                        return {
-                                          content: message.content,
-                                          username: 'Dummy',
-                                          messageId: message._id,
-                                          userId: null
-                                        };
-                                      });
-              this.messages = transformedMessages;
-              return transformedMessages;
-            })
+            .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
   }
 
