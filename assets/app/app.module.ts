@@ -8,7 +8,10 @@ import { AppRouting } from './app.routing';
 import { CommonComponentsModule} from './common';
 import { AuthModule, MessagesModule } from './features';
 
-import { MessageService } from './services';
+import {
+  AuthService,
+  MessageService
+} from './services';
 
 @NgModule({
     declarations: [
@@ -23,6 +26,7 @@ import { MessageService } from './services';
       AppRouting
     ],
     providers: [
+      AuthService,
       MessageService
     ],
     bootstrap: [

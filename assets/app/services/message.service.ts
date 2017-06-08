@@ -14,30 +14,19 @@ export class MessageService {
 
   addMessage(message: Message) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post('http://localhost:3000/message', message, { headers })
+    let token = localStorage.getItem('token') 
+              ? `?token=${localStorage.getItem('token')}` 
+              : '';
+    return this.http.post(`http://localhost:3000/message/${token}`, message, { headers })
             .map((response: Response) => {
               const message: Message = {
                 content: response.json().obj.content,
-                username: 'Dummy',
+                username: response.json().obj.user.firstName,
                 messageId: response.json().obj._id,
-                userId: null
+                userId: response.json().obj.user._id
               };
               this.messages.push(message);
               return message;
-            })
-            .catch((error: Response) => Observable.throw(error.json()));
-  }
-
-  editMessage(message: Message) {
-    this.messageIsEdit.emit(message);
-  }
-
-  updateMessage(message: Message) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.patch(`http://localhost:3000/message/${message.messageId}`, message, { headers })
-            .map((response: Response) => {
-              this.messages.push(message);
-              return response.json();
             })
             .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -50,9 +39,9 @@ export class MessageService {
                                       .map(message => {
                                         return {
                                           content: message.content,
-                                          username: 'Dummy',
+                                          username: message.user.firstName,
                                           messageId: message._id,
-                                          userId: null
+                                          userId: message.user._id
                                         };
                                       });
               this.messages = transformedMessages;
@@ -61,8 +50,25 @@ export class MessageService {
             .catch((error: Response) => Observable.throw(error.json()));
   }
 
+  editMessage(message: Message) {
+    this.messageIsEdit.emit(message);
+  }
+
+  updateMessage(message: Message) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token') 
+              ? `?token=${localStorage.getItem('token')}` 
+              : '';
+    return this.http.patch(`http://localhost:3000/message/${message.messageId}/${token}`, message, { headers })
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error.json()));
+  }
+
   deleteMessage(message: Message) {
-    return this.http.delete(`http://localhost:3000/message/${message.messageId}`)
+    let token = localStorage.getItem('token') 
+              ? `?token=${localStorage.getItem('token')}` 
+              : '';
+    return this.http.delete(`http://localhost:3000/message/${message.messageId}/${token}`)
             .map((response: Response) => {
               this.messages.splice(this.messages.indexOf(message), 1);
               return response.json();
