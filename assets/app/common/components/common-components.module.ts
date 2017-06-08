@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { ErrorComponent } from './error';
 import { HeaderComponent } from './header';
 
 @NgModule({
@@ -10,9 +11,11 @@ import { HeaderComponent } from './header';
     RouterModule
   ],
   declarations: [
+    ErrorComponent,
     HeaderComponent
   ],
   exports: [
+    ErrorComponent,
     HeaderComponent
   ],
   providers: []
